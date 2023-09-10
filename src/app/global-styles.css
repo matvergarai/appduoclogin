@@ -1,0 +1,4 @@
+ion-content {
+    --background: url('../assets/img/fondoapp.jpg') center/cover no-repeat fixed;
+    color: #333; /* Color del texto en el contenido */
+  }

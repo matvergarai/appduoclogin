@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>DuocApp</title>
+  <link rel="icon" type="image/png" href="assets/icon/favicon.png">
+
+  <!-- Estilos globales -->
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('../../../assets/img/fondoapp.jpg'); /* Ruta de la imagen de fondo */
+      background-size: cover; /* Ajusta el tamaño de la imagen al tamaño de la ventana */
+      background-repeat: no-repeat; /* Evita que la imagen se repita */
+      color: #333;
+    }
+  </style>
+  
+
+  <!-- Agregar CSS personalizado -->
+  <style>
+    
+    @media (platform: ios) {
+      body::after {
+        content: "";
+        display: block;
+        height: 20px; /* Altura de la barra de estado en iOS */
+        background-color: #ffcc00; /* Color amarillo personalizado */
+      }
+    }
+  </style>
+
+  
+
+  <!-- Metadatos -->
+  <meta name="color-scheme" content="light dark">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- Fuentes de Google y Material Icons -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

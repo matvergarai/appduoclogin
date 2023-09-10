@@ -1,0 +1,54 @@
+<ion-content class="ion-padding ">
+
+  <!-- Título con logo centrado -->
+  <div class="ion-text-center">
+    <ion-title>
+      <img src="assets/img/logo.jpg" alt="Logo">
+    </ion-title>
+  </div>
+
+  <!-- Contenedor del formulario de inicio de sesión -->
+  <div class="ion-padding-vertical ion-text-center">
+
+    <!-- Card para el formulario -->
+    <ion-card>
+
+      <!-- Título del card -->
+      <ion-card-header>
+        <ion-label class="ion-text-center">
+          <h2 class="ion-text-center">¡Bienvenido!</h2>
+        </ion-label>
+      </ion-card-header>
+
+      <!-- Formulario de inicio de sesión -->
+      <form>
+
+        <!-- Campos del formulario -->
+        <ion-card-content>
+
+          <!-- Campo de correo electrónico -->
+          <ion-item lines="none">
+            <ion-label position="floating">Correo</ion-label>
+            <ion-input name="correo" type="text" [(ngModel)]="usuario.correo"></ion-input>
+          </ion-item>
+
+          <!-- Campo de contraseña -->
+          <ion-item lines="none">
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input name="password" type="password" [(ngModel)]="usuario.password"></ion-input>
+          </ion-item>
+
+          <!-- Botón de inicio de sesión -->
+          <ion-button expand="full" (click)="ingresar()">Ingresar</ion-button>
+
+        </ion-card-content>
+      </form>
+
+      <!-- Enlace para recuperar contraseña (usando una clase CSS personalizada) -->
+      <div class="recover-password-link ion-text-center">
+        <a routerLink="/correo">Recuperar contraseña</a>
+      </div>
+    </ion-card>
+  </div>
+
+</ion-content>

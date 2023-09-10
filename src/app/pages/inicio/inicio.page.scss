@@ -1,0 +1,70 @@
+ion-header {
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+    --padding-end: 20px;
+    --padding-start: 20px;
+  }
+  
+  .fecha {
+    margin-left: -18px !important;
+    padding: 0px;
+    width: 100%;
+  }
+  
+  mat-form-field {
+    padding: 0px;
+    margin: auto;
+  }
+
+  
+
+
+/* Estilizar el ion-title */
+ion-title {
+  text-align: center;
+  padding: 20px 0; /* Ajustar el espacio superior e inferior */
+  font-size: 24px; /* Tamaño de fuente */
+  color: #333; /* Color de texto */
+}
+
+/* Estilizar el ion-card */
+ion-card {
+  text-align: center;
+  padding: 20px; /* Ajustar el espacio alrededor del card */
+  background-color: rgba(255, 255, 255, 0); /* Fondo transparente (ajusta el último valor para cambiar la opacidad) */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilizar el título del card */
+ion-card-title {
+  font-size: 20px; /* Tamaño de fuente del título del card */
+  color: #007bff; /* Color azul para el título del card */
+}
+
+/* Estilizar los ion-item */
+ion-item {
+  margin-bottom: 10px; /* Espaciado entre elementos */
+}
+
+/* Estilizar el botón de ingresar */
+ion-button {
+  width: 100%; /* Ancho completo */
+  background-color: #ffcc00; /* Color amarillo para el fondo del botón */
+  color: #070505; /* Color de texto */
+  border: none; /* Quitar borde del botón */
+  border-radius: 5px; /* Bordes redondeados */
+  text-transform: uppercase; /* Convertir el texto en mayúsculas */
+  font-weight: bold; /* Texto en negrita */
+}
+
+/* Estilizar el enlace para recuperar contraseña */
+a {
+  text-decoration: none; /* Quitar subrayado del enlace */
+  color: #f6f7f8; /* Color azul para el enlace */
+
+}
+
+ion-content {
+  background-color: rgba(255, 255, 255, 0.7); /* Fondo transparente (ajusta el último valor para cambiar la opacidad) */
+}
