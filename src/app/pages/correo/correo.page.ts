@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';// componente se encargará de manejar la lógica relacionada con el inicio de sesión a través del correo electrónico.
 import { Router, NavigationExtras } from '@angular/router'; // Permite navegar y pasar parámetros extra entre páginas
-import { ToastController } from '@ionic/angular'; // Permite mostrar mensajes emergente
-import { Usuario } from 'src/app/model/usuario';
+import { ToastController } from '@ionic/angular'; // Permite mostrar mensajes emergentes
+import { Usuario } from 'src/app/model/usuario'; //Se importa la clase Usuario
 
 @Component({
   selector: 'app-correo',
@@ -10,42 +10,30 @@ import { Usuario } from 'src/app/model/usuario';
 })
 export class CorreoPage implements OnInit {
 
-  public usuario: Usuario;
+  public usuario: Usuario; // se inicializa una instancia de la clase Usuario llamada Usuario
 
-  constructor(private router: Router, private toastController: ToastController) {
+  constructor(private router: Router, private toastController: ToastController) { // establece un correo electrónico y una contraseña iniciales 
     this.usuario = new Usuario('', '', '', '', '', '', 0, null)
-  
-    // Puedes descomentar cualquiera de los siguientes usuarios, para 
-    // hacer tus pruebas y así no tener que digitarlos a cada rato
 
-    // this.usuario.setUsuario('sin.datos@duocuc.cl', '1234');
-    this.usuario.setUsuario('atorres@duocuc.cl', '1234');
-    // this.usuario.setUsuario('jperez@duocuc.cl', '5678');
-    // this.usuario.setUsuario('cmujica@duocuc.cl', '0987');
-    // this.usuario.setUsuario('usuario.inexistente@duocuc.cl', '1234');
-    // this.usuario.setUsuario('atorres@duocuc.cl', 'password mala');
-    // this.usuario.setUsuario('atorres@duocuc.cl', '9999999999999');
-    // this.usuario.setUsuario('atorres@duocuc.cl', '9999');
-    // this.usuario.setUsuario('correo.malo', '0987');
-    // this.usuario.setUsuario('correo.malo@', '0987');
-    // this.usuario.setUsuario('correo.malo@duocuc', '0987');
-    // this.usuario.setUsuario('correo.malo@duocuc.', '0987');
+    
+    this.usuario.setUsuario('giovanni@duocuc.cl', '1234');
+    
   }
 
-  public recuperar(): void {
+  public recuperar(): void { 
     if (this.usuario) {
-      const usu: Usuario | undefined = this.usuario.buscarCorreoValido(this.usuario.correo);
+      const usu: Usuario | undefined = this.usuario.buscarCorreoValido(this.usuario.correo); // busca un usuario válido con el correo proporcionado
 
       if (usu) {
-        const navigationExtras: NavigationExtras = {
+        const navigationExtras: NavigationExtras = { 
           state: {
             usuario: usu
           }
         };
-        this.router.navigate(['/pregunta'], navigationExtras)
+        this.router.navigate(['/pregunta'], navigationExtras) //Si se encuentra un usuario válido, se utiliza Router para navegar a la página /pregunta
       }
       else {
-        this.router.navigate(['/incorrecto'])
+        this.router.navigate(['/incorrecto']) //  Si no se encuentra un usuario válido, se navega a la página /incorrecto.
       }
     }
   } 

@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; // dependencias necesarias desde el módulo @angular/core
 
-@Component({
-  selector: 'app-correcto',
-  templateUrl: './correcto.page.html',
-  styleUrls: ['./correcto.page.scss'],
+@Component({ // se utiliza para configurar y definir metadatos relacionados con el componente (angular)
+  selector: 'app-correcto', // Define el nombre del selector HTML que se usara para intanciar el componente en las demas paginas
+  templateUrl: './correcto.page.html', // Especifica la ubicación de la plantilla HTML
+  styleUrls: ['./correcto.page.scss'],// hojas de estilo que se aplicarán a este componente.
 })
-export class CorrectoPage implements OnInit {
+export class CorrectoPage implements OnInit { //  definición del componente
 
-  constructor() { }
+  constructor() { } // inyectar dependencias
 
-  ngOnInit() {
+  ngOnInit() { // para realizar tareas de inicialización o configuración necesarias para el componente.
   }
 
 }

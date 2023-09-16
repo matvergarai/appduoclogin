@@ -31,7 +31,7 @@ ion-title {
 ion-card {
   text-align: center;
   padding: 20px; /* Ajustar el espacio alrededor del card */
-  background-color: rgba(255, 255, 255, 0); /* Fondo transparente (ajusta el último valor para cambiar la opacidad) */
+  background-color: rgba(255, 255, 255, 0); /* Fondo transparente (último valor para cambiar la opacidad) */
   border-radius: 10px; /* Bordes redondeados */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
@@ -61,10 +61,10 @@ ion-button {
 /* Estilizar el enlace para recuperar contraseña */
 a {
   text-decoration: none; /* Quitar subrayado del enlace */
-  color: #f6f7f8; /* Color azul para el enlace */
+  color: #f6f7f8; /* Color blanco para el enlace */
 
 }
 
 ion-content {
-  background-color: rgba(255, 255, 255, 0.7); /* Fondo transparente (ajusta el último valor para cambiar la opacidad) */
+  background-color: rgba(255, 255, 255, 0.7); /* Fondo transparente (ajustar el último valor para cambiar la opacidad) */
 }

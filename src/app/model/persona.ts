@@ -1,13 +1,13 @@
-import { NivelEducacional } from "./nivel-educacional";
+import { NivelEducacional } from "./nivel-educacional"; // se importa la clase o modulo
 
-export class Persona {
-
-  public nombre;
+export class Persona { // Declaración de la clase Persona
+  // Propiedades públicas
+  public nombre; 
   public apellido;
   public nivelEducacional: NivelEducacional | undefined;
   public fechaNacimiento: Date | null;
 
-  constructor() {
+  constructor() { // inicializa todas las propiedades de la persona
     this.nombre = '';
     this.apellido = '';
     this.nivelEducacional = undefined;
@@ -15,13 +15,13 @@ export class Persona {
   }
 
   public setPersona(nombre: string, apellido: string, idNivelEducacional: number
-      , fechaNacimiento: Date | null) {
+      , fechaNacimiento: Date | null) { // método para establecer los datos de la persona 
     this.nombre = nombre;
     this.apellido = apellido;
     this.nivelEducacional = NivelEducacional.findNivelEducacionalById(idNivelEducacional);
     this.fechaNacimiento = fechaNacimiento;
   }
-
+  // devuelven información relacionada con la persona. Si alguna de las propiedades no está asignada, se devuelve "No asignado". 
   public getNombre(): string {
     if (this.nombre.trim() === '') return 'No asignado';
     return this.nombre;
@@ -52,7 +52,7 @@ export class Persona {
     return this.formatDateToDDMMYYYY(this.fechaNacimiento);
   }
 
-  public formatDateToDDMMYYYY(date: Date): string {
+  public formatDateToDDMMYYYY(date: Date): string { // se utiliza para formatear la fecha de nacimiento en el formato "dd/mm/yyyy".
     const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Sumar 1 ya que los meses van de 0 a 11
     const day = date.getDate().toString().padStart(2, '0');
     const year = date.getFullYear();

@@ -1,4 +1,4 @@
-export class Asistencia {
+export class Asistencia { // atributos públicos que representan información relacionada con la asistencia. 
 
   public bloqueInicio: number;
   public bloqueTermino: number;
@@ -11,7 +11,7 @@ export class Asistencia {
   public seccion: string;
   public sede: string;
 
-  constructor() {
+  constructor() { // inicializa todos los atributos con valores predeterminados
     this.bloqueInicio = 0;
     this.bloqueTermino = 0;
     this.dia = '';
@@ -24,7 +24,7 @@ export class Asistencia {
     this.sede = '';
   }
 
-  public setAsistencia(
+  public setAsistencia( // asignar valores a todos los atributos de la clase.
     bloqueInicio: number,
     bloqueTermino: number,
     dia: string,
@@ -36,7 +36,7 @@ export class Asistencia {
     seccion: string,
     sede: string): void
   {
-    this.bloqueInicio = bloqueInicio;
+    this.bloqueInicio = bloqueInicio; // implementacion del metodo setAsistencia
     this.bloqueTermino = bloqueTermino;
     this.dia = dia;
     this.horaFin = horaFin;

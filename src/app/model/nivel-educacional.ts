@@ -1,22 +1,22 @@
-export class NivelEducacional {
+export class NivelEducacional { // define la estructura de un nivel educativo con dos propiedades públicas
 
-  public id: number;
+  public id: number; 
   public nombre: string;
 
-  constructor(id: number, nombre: string) {
+  constructor(id: number, nombre: string) { // asigna argumentos  y los asigna a las propiedades correspondientes de la instancia de la clase.
     this.id = id;
     this.nombre = nombre;
   }
 
-  public toString(): string {
+  public toString(): string { // devuelve una cadena de texto que combina el id y el nombre del nivel educativo
     return `${this.id} - ${this.nombre}`;
   }
 
-  public static findNivelEducacionalById(id: number): NivelEducacional | undefined {
-    return this.getNivelesEducacionales().find(n => n.id === id);
+  public static findNivelEducacionalById(id: number): NivelEducacional | undefined { // permite buscar un nivel educativo por su id
+    return this.getNivelesEducacionales().find(n => n.id === id); // Si lo encuentra, devuelve el nivel educativo; de lo contrario, devuelve undefined.
   }
 
-  public static getNivelesEducacionales(): NivelEducacional[] {
+  public static getNivelesEducacionales(): NivelEducacional[] { // crea y devuelve un arreglo de objetos NivelEducacional
     const nived = [];
     nived.push(new NivelEducacional(1, 'Sin nivel educacional'));
     nived.push(new NivelEducacional(2, 'Básica incompleta'));
