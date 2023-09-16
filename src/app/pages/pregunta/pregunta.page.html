@@ -1,29 +1,40 @@
-
 <ion-content [fullscreen]="true">
   <ion-title class="ion-padding-top ion-text-center">
     <img src="assets/img/logo.jpg" alt="">
   </ion-title>
-  
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">pregunta</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  
+
 
   <ion-title class="ion-padding-top">
     <ion-label class="ion-text-center">
-      <h1>Responde la pregunta</h1>
-      <p *ngIf="usuario">{{ usuario.preguntaSecreta }}</p>
+      <h1>Paso 2: </h1>
+      <h1>Responde la pregunta secreta </h1>
+      <p  style="padding-top: 25px; font-size: 18px; color: #070707;" class="mi-prrafo" *ngIf="usuario">{{ usuario.nombre }} {{ usuario.apellido }}</p>
+      <p  style="padding-top: 25px; font-size: 18px; color: #070707;" *ngIf="usuario">{{ usuario.preguntaSecreta }}</p>
     </ion-label>
   </ion-title>
 
-  <ion-item>
+  <ion-item style="padding-left: 25px; padding-right: 25px; padding-top: 25px;">
     <ion-label position="floating">Respuesta</ion-label>
     <ion-input [(ngModel)]="respuesta" name="respuesta" type="text"></ion-input>
   </ion-item>
 
-  <ion-button (click)="recuperarRespuesta()">Comprobar Respuesta</ion-button>
+  <ion-button style="padding-left: 25px; padding-right: 25px; padding-top: 50px;"
+    (click)="recuperarRespuesta()">Comprobar Respuesta</ion-button>
+
+
+    <div class="ion-button-container">
+      <div class="ion-text-center">
+        <a class="cuadro-con-fondo" routerLink="/ingreso">Iniciar Sesion</a>
+      </div>
+
+
+    </div>
 
 </ion-content>

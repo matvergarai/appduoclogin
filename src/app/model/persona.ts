@@ -6,6 +6,7 @@ export class Persona { // Declaración de la clase Persona
   public apellido;
   public nivelEducacional: NivelEducacional | undefined;
   public fechaNacimiento: Date | null;
+  
 
   constructor() { // inicializa todas las propiedades de la persona
     this.nombre = '';

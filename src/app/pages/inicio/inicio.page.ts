@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { AnimationController} from '@ionic/angular';
+import { AnimationController } from '@ionic/angular';
 import { NivelEducacional } from 'src/app/model/nivel-educacional';
 import { Usuario } from 'src/app/model/usuario';
+import { Asistencia } from 'src/app/model/asistencia';
+import jsQR, { QRCode } from 'jsqr';
 
 @Component({
   selector: 'app-inicio',
@@ -12,7 +14,6 @@ import { Usuario } from 'src/app/model/usuario';
 })
 
 export class InicioPage implements OnInit, AfterViewInit {
-
   @ViewChild('titulo', { read: ElementRef }) itemTitulo!: ElementRef;
   @ViewChild('itemNombre', { read: ElementRef }) itemNombre!: ElementRef;
   @ViewChild('itemApellido', { read: ElementRef }) itemApellido!: ElementRef;
@@ -21,24 +22,33 @@ export class InicioPage implements OnInit, AfterViewInit {
 
   public usuario: Usuario;
   public idNivelEducacional: number;
-
+  public datosCodigoQR: string = '';
   public nivelesEducacionales: NivelEducacional[] = NivelEducacional.getNivelesEducacionales();
 
-   constructor(
-        private activeroute: ActivatedRoute // Permite obtener los parámetros de la página login
-      , private router: Router // Permite navegar entre páginas
-      , private alertController: AlertController // Permite mostrar mensajes emergentes más complejos que Toast
-      , private animationController: AnimationController) { // Permite crear animaciones con  
+  public sede: string = '';
+  public idAsignatura: string = '';
+  public seccion: string = '';
+  public nombreAsignatura: string = '';
+  public nombreProfesor: string = '';
+  public dia: string = '';
+  public bloqueInicio: number = 0;
+  public bloqueTermino: number = 0;
+  public horaInicio: string = '';
+  public horaFin: string = '';
+  
 
+  constructor(
+    private activeroute: ActivatedRoute,
+    private router: Router,
+    private alertController: AlertController,
+    private animationController: AnimationController
+  ) {
     this.usuario = new Usuario('', '', '', '', '', '', 0, null);
     this.idNivelEducacional = 0;
 
-    // Se llama a la ruta activa y se obtienen sus parámetros mediante una subscripcion
-    this.activeroute.queryParams.subscribe(params => { 
-
+    this.activeroute.queryParams.subscribe(params => {
       const nav = this.router.getCurrentNavigation();
       if (nav) {
-        // Si tiene datos extra, se rescatan y se asignan a una propiedad
         if (nav.extras.state) {
           this.usuario = nav.extras.state['usuario'];
           if (this.usuario.nivelEducacional !== undefined) {
@@ -47,16 +57,32 @@ export class InicioPage implements OnInit, AfterViewInit {
           return;
         }
       }
-      // Si no vienen datos extra desde la página anterior, quiere decir que el usuario
-      // intentó entrar directamente a la página inicio sin pasar por el login,
-      // de modo que el sistema debe enviarlo al login para que inicie sesión.
       this.router.navigate(['/login']);
-
     });
   }
 
-  public ngOnInit(): void {
+  public navegarAMiClase() {
+    const navigationExtras: NavigationExtras = {
+      state: {
+        sede: this.sede,
+        idAsignatura: this.idAsignatura,
+        seccion: this.seccion,
+        nombreAsignatura: this.nombreAsignatura,
+        nombreProfesor: this.nombreProfesor,
+        dia: this.dia,
+        bloqueInicio: this.bloqueInicio,
+        bloqueTermino: this.bloqueTermino,
+        horaInicio: this.horaInicio,
+        horaFin: this.horaFin
+      }
+    };
+    this.router.navigate(['/miclase'], navigationExtras);
+  }
 
+
+  cerrarSesion() {
+    
+    this.router.navigate(['/ingreso']); 
   }
 
   public cambiarNivelEducacional(): void {
@@ -78,7 +104,6 @@ export class InicioPage implements OnInit, AfterViewInit {
   }
 
   public limpiarFormulario(): void {
-
     this.usuario.nombre = '';
     this.usuario.apellido = '';
     this.usuario.nivelEducacional = undefined;
@@ -102,15 +127,12 @@ export class InicioPage implements OnInit, AfterViewInit {
   }
 
   public mostrarDatosPersona(): void {
-    
-    // Si el usuario no ingresa al menos el nombre o el apellido, se mostrará un error
     if (this.usuario.nombre.trim() === '' && this.usuario.apellido === '') {
       this.presentAlert('Datos personales', 'Para mostrar los datos de la persona, '
         + 'al menos debe tener un valor para el nombre o el apellido.');
       return;
     }
 
-    // Mostrar un mensaje emergente con los datos de la persona
     let mensaje = '';
     if (this.usuario) {
       mensaje += '<br><b>Usuario</b>: <br>' + this.usuario.getCorreo();
@@ -123,7 +145,6 @@ export class InicioPage implements OnInit, AfterViewInit {
     }
   }
 
-  // Este método sirve para mostrar un mensaje emergente
   public async presentAlert(titulo: string, mensaje: string) {
     const alert = await this.alertController.create({
       header: titulo,
@@ -133,7 +154,110 @@ export class InicioPage implements OnInit, AfterViewInit {
 
     await alert.present();
   }
+
   public escanear(): void {
-    this.router.navigate(['/qrreader']); // Navegamos hacia el Home y enviamos la información extra
+    this.router.navigate(['/qrreader']);
+  }
+
+  @ViewChild('video')
+  private video!: ElementRef;
+
+  @ViewChild('canvas')
+  private canvas!: ElementRef;
+  public asistencia: Asistencia = new Asistencia();
+  public escaneando = false;
+  public datosQR: string = '';
+
+  private mediaStream: MediaStream | null = null;
+
+  public ngOnInit(): void {
+  }
+
+  public async comenzarEscaneoQR() {
+    const mediaProvider: MediaProvider = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'environment' }
+    });
+    this.video.nativeElement.srcObject = mediaProvider;
+    this.video.nativeElement.setAttribute('playsinline', 'true');
+    this.video.nativeElement.play();
+    this.escaneando = true;
+    requestAnimationFrame(this.verificarVideo.bind(this));
+  }
+
+  async verificarVideo() {
+    if (this.video.nativeElement.readyState === this.video.nativeElement.HAVE_ENOUGH_DATA) {
+      if (this.obtenerDatosQR() || !this.escaneando) return;
+      requestAnimationFrame(this.verificarVideo.bind(this));
+    } else {
+      requestAnimationFrame(this.verificarVideo.bind(this));
+    }
+  }
+
+  public obtenerDatosQR(): boolean {
+    const w: number = this.video.nativeElement.videoWidth;
+    const h: number = this.video.nativeElement.videoHeight;
+    this.canvas.nativeElement.width = w;
+    this.canvas.nativeElement.height = h;
+    const context: CanvasRenderingContext2D = this.canvas.nativeElement.getContext('2d');
+    context.drawImage(this.video.nativeElement, 0, 0, w, h);
+    const img: ImageData = context.getImageData(0, 0, w, h);
+    let qrCode: QRCode | null = jsQR(img.data, w, h, { inversionAttempts: 'dontInvert' });
+    if (qrCode) {
+      if (qrCode.data !== '') {
+        this.escaneando = false;
+        this.mostrarDatosQROrdenados(qrCode.data);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public navegarAInicio() {
+    this.router.navigate(['/inicio']);
+  }
+
+  public mostrarDatosQROrdenados(datosQR: string): void {
+    this.datosQR = datosQR;
+    const objetoDatosQR = JSON.parse(datosQR);
+    this.sede = objetoDatosQR.sede;
+    this.idAsignatura = objetoDatosQR.idAsignatura;
+    this.seccion = objetoDatosQR.seccion;
+    this.nombreAsignatura = objetoDatosQR.nombreAsignatura;
+    this.nombreProfesor = objetoDatosQR.nombreProfesor;
+    this.dia = objetoDatosQR.dia;
+    this.bloqueInicio = objetoDatosQR.bloqueInicio.toString();
+    this.bloqueTermino = objetoDatosQR.bloqueTermino.toString();
+    this.horaInicio = objetoDatosQR.horaInicio;
+    this.horaFin = objetoDatosQR.horaFin;
+    this.datosCodigoQR = datosQR;
+
+    const navigationExtras: NavigationExtras = {
+      state: {
+        sede: this.sede,
+        idAsignatura: this.idAsignatura,
+        seccion: this.seccion,
+        nombreAsignatura: this.nombreAsignatura,
+        nombreProfesor: this.nombreProfesor,
+        dia: this.dia,
+        bloqueInicio: this.bloqueInicio,
+        bloqueTermino: this.bloqueTermino,
+        horaInicio: this.horaInicio,
+        horaFin: this.horaFin
+      }
+    };
+    this.router.navigate(['/miclase'], navigationExtras);
+    this.detenerCamara();
+  }
+
+  public detenerEscaneoQR(): void {
+    this.escaneando = false;
+  }
+
+  private detenerCamara(): void {
+    if (this.mediaStream) {
+      this.mediaStream.getTracks().forEach((track) => {
+        track.stop();
+      });
+    }
   }
 }

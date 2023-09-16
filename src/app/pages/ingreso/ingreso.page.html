@@ -1,9 +1,11 @@
-<ion-content class="ion-padding ">
+<ion-content class="ion-padding">
 
   <!-- Título con logo centrado -->
   <div class="ion-text-center">
     <ion-title>
       <img src="assets/img/logo.jpg" alt="Logo">
+      <h2 style="font-size: 24px; color: #050505;">Registro Asistencia DuocUc</h2>
+
     </ion-title>
   </div>
 
@@ -16,7 +18,7 @@
       <!-- Título del card -->
       <ion-card-header>
         <ion-label class="ion-text-center">
-          <h2 class="ion-text-center">¡Bienvenido!</h2>
+          <h2 style="font-size: 24px; color: #ffffff;"></h2>
         </ion-label>
       </ion-card-header>
 
@@ -40,14 +42,20 @@
 
           <!-- Botón de inicio de sesión -->
           <ion-button expand="full" (click)="ingresar()">Ingresar</ion-button>
-
+          
         </ion-card-content>
       </form>
 
-      <!-- Enlace para recuperar contraseña (usando una clase CSS personalizada) -->
-      <div class="recover-password-link ion-text-center">
-        <a routerLink="/correo">Recuperar contraseña</a>
+      <!-- Enlace para recuperar contraseña -->
+      
+      <div class="ion-button-container">
+        <div class="ion-text-center">
+          <a class="cuadro-con-fondo" routerLink="/correo">Recuperar contraseña</a>
+        </div>
+
+
       </div>
+      
     </ion-card>
   </div>
 

@@ -12,35 +12,45 @@
     Se genera una división donde estará el contenido del login,
     
   -->
-  <div class="ion-padding-vertical">
+  <div class="ion-padding-vertical" style="padding-left: 25px; padding-right: 25px; padding-top: 50px;">
     
     <!-- Se establece un card que contendrá un título y un contenido -->
-    <ion-card class="ion-text-center ion-padding-vertical">
+    <ion-card class="ion-text-center ion-padding-vertical" >
 
       <!-- Título del card -->
       <ion-card-title class="ion-text-center">
         <ion-label>
-          <h2>¡Bienvenido!</h2>
+          <h2>Ingresa tu correo institucional</h2>
         </ion-label>
       </ion-card-title>
 
       <!-- Formulario de login -->
       <form>
         <!-- Contenido del card -->
-        <ion-card-content>
+        <ion-card-content >
           
           <!-- Item de correo -->
-          <ion-item>
+          <ion-item >
             <!-- Usamos ngModel para indicarle al input que se ligará con la propiedad "usuario.correo" -->
             <ion-input name="correo" label="Correo" labelPlacement="floating" type="text" [(ngModel)]="usuario.correo"></ion-input>
           </ion-item>
 
           <!-- Se debe usar (click) para enlazar con el método de la clase en typescript -->
-          <ion-button shape="block" (click)="recuperar()">Recuperar contraseña</ion-button> 
+          <ion-button style="padding-top: 25px;" shape="block" (click)="recuperar()">Recuperar contraseña</ion-button> 
 
         </ion-card-content>
       </form>
+
+      
     </ion-card>
+
+    <div class="ion-button-container">
+      <div class="ion-text-center">
+        <a class="cuadro-con-fondo" routerLink="/ingreso">Iniciar Sesion</a>
+      </div>
+
+
+    </div>
   </div>
   
 </ion-content>

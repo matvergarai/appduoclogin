@@ -4,6 +4,7 @@ import { Asistencia } from 'src/app/model/asistencia';
 import jsQR, { QRCode } from 'jsqr';
 import { Router, NavigationExtras } from '@angular/router'; 
 
+
 @Component({ //  propiedades y métodos que controlan la lógica de la página.
   selector: 'app-qrreader',
   templateUrl: './qrreader.page.html',

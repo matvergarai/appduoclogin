@@ -17,6 +17,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MenuController } from '@ionic/angular';
+
+
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,11 +43,18 @@ import { MatSelectModule } from '@angular/material/select';
     , MatSelectModule
     , MatRippleModule
   ],
-  providers: [
+  providers: [ 
+     MenuController,
+
+
+    
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     // CGV: Dejar módulos de Angular Material en español, por ejemplo, las fechas dd/mm/yyyy
     { provide: MAT_DATE_LOCALE, useValue: 'es-CL' }
   ],
   bootstrap: [AppComponent],
+
+  
 })
 export class AppModule {}
+

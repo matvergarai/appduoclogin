@@ -13,7 +13,7 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     IonicModule,
     InicioPageRoutingModule,
-    // CGV: Módulos de Angular Material
+    
     MatDatepickerModule,
     MatInputModule
   ],

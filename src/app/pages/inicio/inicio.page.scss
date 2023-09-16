@@ -24,14 +24,14 @@ ion-title {
   text-align: center;
   padding: 20px 0; /* Ajustar el espacio superior e inferior */
   font-size: 24px; /* Tamaño de fuente */
-  color: #333; /* Color de texto */
+  color: #002138; /* Color de texto */
 }
 
 /* Estilizar el ion-card */
 ion-card {
   text-align: center;
   padding: 20px; /* Ajustar el espacio alrededor del card */
-  background-color: rgba(255, 255, 255, 0); /* Fondo transparente (último valor para cambiar la opacidad) */
+  background-color: #002138; /* Fondo transparente (último valor para cambiar la opacidad) */
   border-radius: 10px; /* Bordes redondeados */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
@@ -45,12 +45,25 @@ ion-card-title {
 /* Estilizar los ion-item */
 ion-item {
   margin-bottom: 10px; /* Espaciado entre elementos */
+  border-radius: 8px; /* Bordes redondeados */
+  
+
 }
 
 /* Estilizar el botón de ingresar */
-ion-button {
+ion-toolbar ion-button {
   width: 100%; /* Ancho completo */
-  background-color: #ffcc00; /* Color amarillo para el fondo del botón */
+  background-color: #F8B31C; /* Color amarillo para el fondo del botón */
+  color: #070505; /* Color de texto */
+  border: none; /* Quitar borde del botón */
+  border-radius: 5px; /* Bordes redondeados */
+  text-transform: uppercase; /* Convertir el texto en mayúsculas */
+  font-weight: bold; /* Texto en negrita */
+}
+
+ion-content ion-button {
+  width: 100%; /* Ancho completo */
+  background-color: transparent; /* Color amarillo para el fondo del botón */
   color: #070505; /* Color de texto */
   border: none; /* Quitar borde del botón */
   border-radius: 5px; /* Bordes redondeados */
@@ -61,10 +74,10 @@ ion-button {
 /* Estilizar el enlace para recuperar contraseña */
 a {
   text-decoration: none; /* Quitar subrayado del enlace */
-  color: #f6f7f8; /* Color blanco para el enlace */
+  color: #002138; /* Color blanco para el enlace */
 
 }
 
 ion-content {
-  background-color: rgba(255, 255, 255, 0.7); /* Fondo transparente (ajustar el último valor para cambiar la opacidad) */
+  background-color: #002138; /* Fondo transparente (ajustar el último valor para cambiar la opacidad) */
 }

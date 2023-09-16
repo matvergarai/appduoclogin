@@ -1,0 +1,67 @@
+
+
+  
+
+
+/* Estilizar el ion-title */
+ion-title {
+  text-align: center;
+  padding: 20px 0; /* Ajustar el espacio superior e inferior */
+  font-size: 24px; /* Tamaño de fuente */
+  color: #002138; /* Color de texto */
+}
+
+
+
+/* Estilizar los ion-item */
+ion-item {
+  margin-bottom: 10px; /* Espaciado entre elementos */
+  border-radius: 8px; /* Bordes redondeados */
+  
+
+}
+
+/* Estilizar el botón */
+ion-button {
+  width: 100%; /* Ancho completo */
+  background-color: #F8B31C; /* Color amarillo para el fondo del botón */
+  color: #002138; /* Color de texto */
+  border: none; /* Quitar borde del botón */
+  border-radius: 5px; /* Bordes redondeados */
+  text-transform: uppercase; /* Convertir el texto en mayúsculas */
+  font-weight: bold; /* Texto en negrita */
+}
+
+
+/* Estilos para la tabla */
+.datos-table {
+  width: 100%;
+  border-collapse: collapse; /* Eliminar espacio entre celdas */
+  margin-top: 20px;
+  border: 1px solid #002138; /* Borde de la tabla */
+  background-color: #fff;
+  color: #002138;
+}
+
+.datos-table td {
+  padding: 10px;
+  border: 3px solid #002138; /* Borde de las celdas */
+}
+
+.datos-table strong {
+  font-weight: bold;
+}
+
+/* Estilos para los datos del código QR */
+div[ngIf] {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+}
+
+h2 {
+  font-size: 20px;
+  color: #002138;
+}

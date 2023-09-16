@@ -4,12 +4,12 @@
 /** Ionic CSS Variables **/
 :root {
   /* Primary Colors */
-  --ion-color-primary: #ffff00; /* Amarillo */
+  --ion-color-primary: #F8B31C; /* Amarillo */
   --ion-color-primary-rgb: 255, 255, 0;
   --ion-color-primary-contrast: #0000ff; /* Azul */
   --ion-color-primary-contrast-rgb: 0, 0, 255;
-  --ion-color-primary-shade: #ffcc00; /* Amarillo oscuro */
-  --ion-color-primary-tint: #ffea00; /* Amarillo claro */
+  --ion-color-primary-shade: #F8B31C; /* Amarillo oscuro */
+  --ion-color-primary-tint: #F8B31C; /* Amarillo claro */
 
   /* Secondary Colors */
   --ion-color-secondary: #0000ff; /* Azul */
@@ -28,12 +28,12 @@
   --ion-color-tertiary-tint: #e6e6e6; /* Blanco claro */
 
   /* Success Colors */
-  --ion-color-success: #ffff00; /* Amarillo */
+  --ion-color-success: #F8B31C; /* Amarillo */
   --ion-color-success-rgb: 255, 255, 0;
   --ion-color-success-contrast: #0000ff; /* Azul */
   --ion-color-success-contrast-rgb: 0, 0, 255;
-  --ion-color-success-shade: #ffcc00; /* Amarillo oscuro */
-  --ion-color-success-tint: #ffea00; /* Amarillo claro */
+  --ion-color-success-shade: #F8B31C; /* Amarillo oscuro */
+  --ion-color-success-tint: #F8B31C; /* Amarillo claro */
 
   /* Warning Colors */
   --ion-color-warning: #0000ff; /* Azul */
@@ -83,12 +83,12 @@
    */
 
    body {
-    --ion-color-primary: #ffff00; /* Amarillo */
+    --ion-color-primary: #F8B31C; /* Amarillo */
     --ion-color-primary-rgb: 255, 255, 0;
     --ion-color-primary-contrast: #0000ff; /* Azul */
     --ion-color-primary-contrast-rgb: 0, 0, 255;
-    --ion-color-primary-shade: #ffcc00; /* Amarillo oscuro */
-    --ion-color-primary-tint: #ffea00; /* Amarillo claro */
+    --ion-color-primary-shade: #F8B31C; /* Amarillo oscuro */
+    --ion-color-primary-tint: #F8B31C; /* Amarillo claro */
 
     --ion-color-secondary: #0000ff; /* Azul */
     --ion-color-secondary-rgb: 0, 0, 255;
@@ -104,12 +104,12 @@
     --ion-color-tertiary-shade: #cccccc; /* Blanco oscuro */
     --ion-color-tertiary-tint: #e6e6e6; /* Blanco claro */
 
-    --ion-color-success: #ffff00; /* Amarillo */
+    --ion-color-success: ##F8B31C; /* Amarillo */
     --ion-color-success-rgb: 255, 255, 0;
     --ion-color-success-contrast: #0000ff; /* Azul */
     --ion-color-success-contrast-rgb: 0, 0, 255;
-    --ion-color-success-shade: #ffcc00; /* Amarillo oscuro */
-    --ion-color-success-tint: #ffea00; /* Amarillo claro */
+    --ion-color-success-shade: #F8B31C; /* Amarillo oscuro */
+    --ion-color-success-tint: #f81cb6; /* Amarillo claro */
 
     --ion-color-warning: #0000ff; /* Azul */
     --ion-color-warning-rgb: 0, 0, 255;
