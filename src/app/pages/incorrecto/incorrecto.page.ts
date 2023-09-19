@@ -12,4 +12,8 @@ export class IncorrectoPage implements OnInit {
   ngOnInit() {
   }
 
+  buttonClicked() {
+    console.log('Botón clickeado');
+  }
+
 }

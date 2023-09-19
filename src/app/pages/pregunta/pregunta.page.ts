@@ -35,18 +35,20 @@ export class PreguntaPage implements OnInit {
     if (this.usuario) {
       // Trae al usuario en base a la respuesta
       const usu: Usuario | undefined = this.usuario.buscarRespuesta(this.usuario.correo, this.respuesta);
-
+  
       if (usu) {
+        console.log('Contraseña enviada:', usu.password);
         const navigationExtras: NavigationExtras = {
           state: {
-            usuario: usu
+            usuario: usu,
+            contrasena: usu.password  // Pasa la contraseña del usuario
           }
         };
-        this.router.navigate(['/correcto'], navigationExtras)
-      }
-      else {
-        this.router.navigate(['/incorrecto'])
+        this.router.navigate(['/correcto'], navigationExtras);
+      } else {
+        this.router.navigate(['/incorrecto']);
       }
     }
   }
+  
 }

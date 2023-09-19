@@ -140,5 +140,4 @@
         usu => usu.correo === correo && usu.respuestaSecreta === respuesta);
       return nived;
     }
-
   }

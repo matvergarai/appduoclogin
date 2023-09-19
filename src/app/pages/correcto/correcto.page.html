@@ -1,19 +1,26 @@
-
 <ion-content [fullscreen]="true">
 
   <ion-title class="ion-padding-top ion-text-center">
     <img src="assets/img/logo.jpg" alt="">
   </ion-title>
 
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Correcto</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  
-
-
-
+  <ion-card color="primary">
+    <ion-card-header>
+      <ion-card-title class="texto-correcto ion-text-center">CORRECTO</ion-card-title>
+      <ion-card-subtitle></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div id="contrasena-container">
+        <p class="ion-text-center mensaje">Tu contraseña es: {{ contrasena }}</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <div class="ion-button-container">
+    <div class="ion-text-center">
+      <a class="cuadro-con-fondo" routerLink="/ingreso">Iniciar Sesion</a>
+    </div>
+  </div>
   
 </ion-content>
+
+<img src="assets/img/correcto.png" alt="" class="imagen">

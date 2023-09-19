@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core'; // dependencias necesarias desde el módulo @angular/core
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-@Component({ // se utiliza para configurar y definir metadatos relacionados con el componente (angular)
-  selector: 'app-correcto', // Define el nombre del selector HTML que se usara para intanciar el componente en las demas paginas
-  templateUrl: './correcto.page.html', // Especifica la ubicación de la plantilla HTML
-  styleUrls: ['./correcto.page.scss'],// hojas de estilo que se aplicarán a este componente.
+@Component({
+  selector: 'app-correcto',
+  templateUrl: './correcto.page.html',
+  styleUrls: ['./correcto.page.scss'],
 })
-export class CorrectoPage implements OnInit { //  definición del componente
+export class CorrectoPage implements OnInit {
 
-  constructor() { } // inyectar dependencias
+  contrasena: string='';
 
-  ngOnInit() { // para realizar tareas de inicialización o configuración necesarias para el componente.
+  constructor(private route: ActivatedRoute, private cdr: ChangeDetectorRef) {}
+
+  ngOnInit() {
+    this.route.queryParams.subscribe((params: any) => { // Utiliza 'any' para permitir cualquier propiedad en 'params'
+      if (params && params.contrasena) {
+        this.contrasena = params.contrasena;
+        console.log('Contraseña asignada:', this.contrasena);
+        this.cdr.detectChanges(); // Para forzar la actualización de la vista
+      }
+    });
   }
 
+  buttonClicked() {
+    console.log('Botón clickeado');
+  }
 }
